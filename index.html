@@ -1,145 +1,104 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
 	<title>在线交流</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
 		body {
 			font-family: Arial, sans-serif;
 			background-color: #f2f2f2;
 		}
-		h1 {
-			text-align: center;
-			margin-top: 50px;
-		}
-		form {
-			margin: 50px auto;
-			width: 80%;
-			max-width: 600px;
-			background-color: #fff;
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
 			padding: 20px;
-			border-radius: 5px;
-			box-shadow: 0 0 10px rgba(0,0,0,0.2);
-		}
-		label {
-			display: block;
-			margin-bottom: 10px;
-			font-weight: bold;
-		}
-		input[type="text"], textarea {
-			width: 100%;
-			padding: 10px;
-			border: none;
-			border-radius: 5px;
-			box-shadow: 0 0 5px rgba(0,0,0,0.1);
-			margin-bottom: 20px;
-			font-size: 16px;
-		}
-		input[type="submit"] {
-			background-color: #4CAF50;
-			color: #fff;
-			padding: 10px 20px;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-			font-size: 16px;
-		}
-		input[type="submit"]:hover {
-			background-color: #3e8e41;
-		}
-		.messages {
-			margin: 50px auto;
-			width: 80%;
-			max-width: 600px;
 			background-color: #fff;
-			padding: 20px;
-			border-radius: 5px;
 			box-shadow: 0 0 10px rgba(0,0,0,0.2);
 		}
 		.message {
 			margin-bottom: 10px;
-			padding-bottom: 10px;
-			border-bottom: 1px solid #ccc;
+			padding: 10px;
+			background-color: #f9f9f9;
+			border-radius: 5px;
 		}
-		.message p {
-			margin: 0;
-			font-size: 16px;
-		}
-		.message span {
+		.message .author {
 			font-weight: bold;
-			margin-right: 10px;
+			margin-bottom: 5px;
+		}
+		.message .content {
+			font-size: 14px;
+		}
+		.form {
+			display: flex;
+			margin-top: 20px;
+		}
+		.form input[type="text"] {
+			flex: 1;
+			padding: 10px;
+			font-size: 14px;
+			border: none;
+			border-radius: 5px 0 0 5px;
+		}
+		.form input[type="submit"] {
+			padding: 10px;
+			font-size: 14px;
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			border-radius: 0 5px 5px 0;
+			cursor: pointer;
 		}
 	</style>
 </head>
 <body>
-	<h1>在线交流</h1>
-	<form id="message-form">
-		<label for="name">姓名</label>
-		<input type="text" id="name" name="name" required>
-		<label for="message">留言</label>
-		<textarea id="message" name="message" rows="5" required></textarea>
-		<input type="submit" value="发送">
-	</form>
-	<div class="messages" id="messages">
-		<!-- 这里将显示留言 -->
+	<div class="container">
+		<h1>在线交流</h1>
+		<div id="messages"></div>
+		<form class="form" onsubmit="sendMessage(); return false;">
+			<input type="text" id="messageInput" placeholder="请输入消息...">
+			<input type="submit" value="发送">
+		</form>
 	</div>
+
 	<script>
-		// 获取表单和留言列表
-		const form = document.getElementById('message-form');
-		const messages = document.getElementById('messages');
+		// 创建一个 WebSocket 连接
+		const socket = new WebSocket('ws://localhost:3000');
 
-		// 当表单提交时，发送留言到服务器
-		form.addEventListener('submit', (event) => {
-			event.preventDefault(); // 阻止表单默认提交行为
-
-			// 获取表单数据
-			const name = form.elements.name.value;
-			const message = form.elements.message.value;
-
-			// 发送POST请求到服务器
-			fetch('/api/messages', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({ name, message })
-			})
-			.then(response => response.json())
-			.then(data => {
-				// 清空表单
-				form.reset();
-
-				// 添加新留言到留言列表
-				const messageElement = document.createElement('div');
-				messageElement.classList.add('message');
-				messageElement.innerHTML = `
-					<p><span>${data.name}:</span> ${data.message}</p>
-				`;
-				messages.appendChild(messageElement);
-			})
-			.catch(error => {
-				console.error(error);
-				alert('发送留言失败，请稍后再试。');
-			});
+		// 当连接打开时，发送一个消息
+		socket.addEventListener('open', function (event) {
+			socket.send('Hello Server!');
 		});
 
-		// 页面加载时，获取所有留言并显示到留言列表
-		fetch('/api/messages')
-		.then(response => response.json())
-		.then(data => {
-			data.forEach(message => {
-				const messageElement = document.createElement('div');
-				messageElement.classList.add('message');
-				messageElement.innerHTML = `
-					<p><span>${message.name}:</span> ${message.message}</p>
-				`;
-				messages.appendChild(messageElement);
-			});
-		})
-		.catch(error => {
-			console.error(error);
-			alert('获取留言失败，请稍后再试。');
+		// 监听来自服务器的消息
+		socket.addEventListener('message', function (event) {
+			const message = JSON.parse(event.data);
+			addMessage(message.author, message.content);
 		});
+
+		// 发送消息到服务器
+		function sendMessage() {
+			const messageInput = document.getElementById('messageInput');
+			const message = {
+				author: '我',
+				content: messageInput.value
+			};
+			socket.send(JSON.stringify(message));
+			addMessage(message.author, message.content);
+			messageInput.value = '';
+		}
+
+		// 添加消息到页面
+		function addMessage(author, content) {
+			const messages = document.getElementById('messages');
+			const message = document.createElement('div');
+			message.classList.add('message');
+			message.innerHTML = `
+				<div class="author">${author}:</div>
+				<div class="content">${content}</div>
+			`;
+			messages.appendChild(message);
+		}
 	</script>
 </body>
 </html>

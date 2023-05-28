@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pixel Art</title>
+	<style>
+		canvas {
+			image-rendering: pixelated;
+			image-rendering: -moz-crisp-edges;
+			image-rendering: crisp-edges;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="500"></canvas>
+	<script>
+		window.onload = function() {
+			var canvas = document.getElementById("canvas");
+			var ctx = canvas.getContext("2d");
+			for (var i = 0; i < canvas.width; i++) {
+				for (var j = 0; j < canvas.height; j++) {
+					var t1 = Math.floor(Math.random() * 256);
+					var t2 = Math.floor(Math.random() * 256);
+					var t3 = Math.floor(Math.random() * 256);
+					ctx.fillStyle = "rgb(" + t1 + "," + t2 + "," + t3 + ")";
+					ctx.fillRect(i, j, 1, 1);
+				}
+			}
+		}
+	</script>
+</body>
+</html> 

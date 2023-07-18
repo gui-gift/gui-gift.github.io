@@ -1,336 +1,83 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
- <link rel="stylesheet" href="./index.css">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-<title>蒙城县创新中学</title>
-<link rel="stylesheet" type="text/css" href="css/index.css">
-</head>
-
-<script>
-<!--
-
-function setTab(name,cursel,n){
-for(i=1;i<=n;i++){
-  var menu=document.getElementById(name+i);
-  var con=document.getElementById("con_"+name+"_"+i);
-  menu.className=i==cursel?"hover":"";
-  con.style.display=i==cursel?"block":"none";
-}
-}
-//-->
-</script>
-<body>
-
-
-
-<div class="top_bg"><div class="top">
-<img src="./1.jpg" alt="Logo" style="width: 430px; height: 108px;">
-
- <div class="youce"><p><a href="index-2.html">联系我们</a> | 学校邮箱 | <a href="index-2.html">网站地图</a></p>
-<div class="sousuo"><input name="" type="text" class="sousuo_in" />
-  <a href="http://www.baidu.com/" target="_blank"><img src="images/sousuo_btn.jpg" style="float:left;" /></a></div>
-</div>
-</div></div>
-
-<div class="nav_bg"><div class="nav"><p><a href="index-2.html">首 页</a><a href="gaikuang.html">学校概况</a><a href="xinwen.html">新闻中心</a><a href="xiaoyou.html">校友时空</a><a href="xuesheng.html">学生会</a><a href="jiazhang.html">家长学校</a><a href="xinwen.html">通知公告</a><a href="xinwen.html">校内新闻</a><a href="xinwen.html">教育新闻</a><a href="yinyue.html">音乐欣赏</a></p>
-</div></div>
-
-
-<center>
-<div id="page">
-
-<div class="lunhuan">
-   <script type="text/javascript" language="JavaScript">
-
-var widths=470;    
-var w=2;
-var widthss=widths+w;
-var heights=410; 
-var heightss=heightss+w;
-var heightt=20;
-var counts=5;     
-
-img1=new Image();img1.src='images/1.jpg';
-url1=new Image();url1.src='#';
-
-
-img2=new Image();img2.src='images/2.jpg';
-url2=new Image();url2.src='#';
-
-
-img3=new Image();img3.src='images/3.jpg';
-url3=new Image();url3.src='#';
-
-img4=new Image();img4.src='images/4.jpg';
-url4=new Image();url4.src='#';
-
-img5=new Image();img5.src='images/5.jpg';
-url5=new Image();url5.src='#';
-
-var nn=1; //当前所显示的滚动图
-var key=0;    //标识是否为第一次开始执行
-var tt;    //标识作用
-
-function change_img()
-{
-if(key==0){key=1;} //如果第一次执行KEY=1，表示已经执行过一次了。
-else if(document.all)//document.all仅IE6/7认识，firefox不会执行此段内容
-{
-document.getElementById("pic").filters[0].Apply(); //将滤镜应用到对像上
-document.getElementById("pic").filters[0].Play(duration=2);  //开始转换
-document.getElementById("pic").filters[0].Transition=23;//转换效果
-}
-
-eval('document.getElementById("pic").src=img'+nn+'.src');     //替换图片
-eval('document.getElementById("url").href=url'+nn+'.src'); //替换URL
- //替换ALT
-
-for (var i=1;i<=counts;i++)
-{
-    document.getElementById("xxjdjj"+i).className='axx';     
-}
-document.getElementById("xxjdjj"+nn).className='bxx';  //将当前页面的ID设置为选中状态
-nn++;
-if(nn>counts){nn=1;}    //如果ID大于总图片数量。则从头开始循环
-tt=setTimeout('change_img()',4000);    //在4秒后重新执行change_img()方法.
-}
-function changeimg(n)//点击黑条上的链接执行的方法。
-{
-nn=n; //当前页面的ID等于传入的N值,
-window.clearInterval(tt); //清除用于循环的TT
-//重新执行change_img();但change_img()内所调用的图片ID已经在此处被修改,会从新ID处开始执行.
-change_img();
-}
-//样式表
-document.write('<style>');
-document.write('.axx{padding:1px 6px;margin-left:3px;border-left:#cccccc 1px solid;font-size:12px;}');
-document.write('a.axx:link,a.axx:visited{text-decoration:none;color:#666;');
-document.write('line-height:12px;font:12px sans-serif;background-color:#eee;border:1px solid #666}');
-
-document.write('.bxx{padding:1px 6px;margin-left:3px;border-left:#cccccc 1px solid;}');
-document.write('a.bxx:link,a.bxx:visited{text-decoration:none;color:#111;');
-document.write('line-height:12px;font:12px sans-serif;background-color:#fff;border:1px solid #111}');
-
-document.write('</style>');
-//内容部分
-document.write('<div style="width:'+widthss+'px;height:'+heights+'px;');
-document.write('overflow:hidden;text-overflow:clip;float:left;">');
-document.write('<div><a id="url" target="_blank"><img id="pic" ');
-document.write('style="border:0;');
-document.write('FILTER: progid:DXImageTransform.Microsoft.RevealTrans (duration=2,transition=23)"');
-document.write(' width='+widths+' height='+heights+' /></a></div>');
-document.write('<div style="filter:alpha(style=1,opacity=10,finishOpacity=90);');
-document.write('width:100%-2px;text-align:right;');
-document.write('top:-19px;position:relative;margin:-13px 19px 0 1px;height:22px;line-height:22px;');
-document.write('z-index:4000;"><div style="height:22px;line-height:22px;padding:2px 0 0 0;">');
-
-
-for(var i=1;i<counts+1;i++)
-{
-document.write('<a href="javascript:changeimg('+i+');" id="xxjdjj'+i+'"');
-document.write(' class="axx" target="_self">'+i+'</a>');
-}
-document.write('</div></div></div>');
-
-
-change_img();
-
-
-</script>
-
-</div>
-
-<div class="you">
-<div class="youA"><p><a href="#"  id="one1" onclick="setTab('one',1,3)" class="hover">新闻中心</a><a href="#" id="one2" onclick="setTab('one',2,3)">通知公告</a><a href="#" id="one3" onclick="setTab('one',3,3)">校内新闻</a></p></div>
-<div class="youB">
-
-<div id="con_one_1" class="hover">
- <table width="440" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td width="351" height="31"><p><a href="xinwen.html">关于蒙城县创新中学召开家长会的公告通知</a></p></td>
-      <td width="89">(3月12日)</td>
-    </tr>
-    <tr>
-      <td height="31"><p><a href="xinwen.html">关于举办我校科技创新大赛的通知</a></p></td>
-      <td>(3月12日)</td>
-    </tr>
-    <tr>
-      <td width="351" height="31"><p><a href="xinwen.html">蒙城县创新中学关于做好对特殊群体儿童开展帮扶工作的</a></p></td>
-      <td width="89">(3月12日)</td>
-    </tr>
-    <tr>
-      <td height="31"><p><a href="xinwen.html">蒙城县创新中学关于禁止非法使用未成年工人的通知..</a></p></td>
-      <td>(3月12日)</td>
-    </tr>
-    <tr>
-      <td width="351" height="31"><p><a href="xinwen.html">党的“十八大”基本情况、主要精神..</a></p></td>
-      <td width="89">(3月12日)</td>
-    </tr>
-    <tr>
-      <td height="31"><p><a href="xinwen.html">蒙城县创新中学高三年级心理辅导计划..</a></p></td>
-      <td>(3月12日)</td>
-    </tr>
-    <tr>
-      <td width="351" height="31"><p><a href="xinwen.html">我校党员“寄语十八大”作品选登</a></p></td>
-      <td width="89">(3月12日)</td>
-    </tr>
-    <tr>
-      <td height="31"><p><a href="xinwen.html">蒙城县2013年秋季开学阶段学校安全综治工作检查..</a></p></td>
-      <td>(3月12日)</td>
-    </tr>
-  </table>
-</div>
-
-<div id="con_one_2" style="display:none">
- <table width="440" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td width="351" height="31"><p><a href="tongzhi.html">关于2013年“清明节”放假安排的通知</a></p></td>
-      <td width="89">(3月12日)</td>
-    </tr>
-    <tr>
-      <td height="31"><p><a href="tongzhi.html">会议通知</a></p></td>
-      <td>(3月12日)</td>
-    </tr>
-   <tr>
-      <td height="31"><p><a href="tongzhi.html">关于贯彻落实改进工作作风密切联系群众的八项规定</a></p></td>
-      <td width="89">(3月12日)</td>
-    </tr>
-    <tr>
-      <td height="31"><p><a href="tongzhi.html">2013年学校党委工作要点</a></p></td>
-      <td>(3月12日)</td>
-    </tr>
-    <tr>
-      <td height="31"><p><a href="tongzhi.html">教学仪器设备校内公开采购评议结果公告</a></p></td>
-      <td width="89">(3月12日)</td>
-    </tr>
-    <tr>
-      <td height="31"><p><a href="tongzhi.html">学校投影机维保项目招标公告</a></p></td>
-      <td>(3月12日)</td>
-    </tr>
-    <tr>
-      <td height="31"><p><a href="tongzhi.html">计算机等设备招标公告</a></p></td>
-      <td width="89">(3月12日)</td>
-    </tr>
-    <tr>
-      <td height="31"><p><a href="tongzhi.html">2013年上半年党日活动安排</a></p></td>
-      <td>(3月12日)</td>
-    </tr>
-  </table>
-</div>
-
-<div id="con_one_3" style="display:none">
- <table width="440" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td width="351" height="31"><p><a href="xiaonei.html">我校隆重举行总结表彰暨开学典礼大会</a></p></td>
-      <td width="89">(3月12日)</td>
-    </tr>
-    <tr>
-      <td height="31"><p><a href="xiaonei.html">我校召开校级精品课程建设工作座谈会</a></p></td>
-      <td>(3月12日)</td>
-    </tr>
-   <tr>
-      <td width="351" height="31"><p><a href="xiaonei.html">蒙城县创新中学首届青年教师课堂教学大奖赛表彰</a></p></td>
-      <td width="89">(3月12日)</td>
-    </tr>
-    <tr>
-      <td height="31"><p><a href="xiaonei.html">我校举办学习贯彻党的十八大精神动员暨专题报告会</a></p></td>
-      <td>(3月12日)</td>
-    </tr>
-    <tr>
-      <td width="351" height="31"><p><a href="xiaonei.html">党的“十八大”基本情况、主要精神和重大意义</a></p></td>
-      <td width="89">(3月12日)</td>
-    </tr>
-    <tr>
-      <td height="31"><p><a href="xiaonei.html">贾光宇书记在学习宣传和贯彻党的十八大精神动员会上..</a></p></td>
-      <td>(3月12日)</td>
-    </tr>
-    <tr>
-      <td width="351" height="31"><p><a href="xiaonei.html">大学生活漫谈讲座总结</a></p></td>
-      <td width="89">(3月12日)</td>
-    </tr>
-    <tr>
-      <td height="31"><p><a href="xiaonei.html">我院大学生志愿服务中心迎新生见面会</a></p></td>
-      <td>(3月12日)</td>
-    </tr>
-  </table>
-</div>
-
-
-
-</div>
-
-
-<div class="kuaijie">
-<p><a href="denglu.html">登陆</a></p>
-<p><a href="gaikuang.html">学校概况</a></p>
-<p><a href="index-2.html">实训中心</a></p>
-<p><a href="xinwen.html">新闻中心</a></p>
-<p><a href="index-2.html">院系设置</a></p>
-<p><a href="index-2.html">招生就业</a></p>
-<p><a href="index-2.html">师资队伍</a></p>
-<p><a href="index-2.html">科学研究</a></p>
-<p><a href="index-2.html">学科建设</a></p>
-<p><a href="index-2.html">国际交流</a></p>
-<p><a href="index-2.html">数字校园</a></p>
-<p><a href="index-2.html">信息资源</a></p>
-</div></div>
-
-
-
-</div>
-<div class="clearit"></div>
-
-<div class="liebiao">
-
-<div class="liebiao_l">
-<div class="liebiaoA"><h6>教育新闻</h6><span><a href="xinwen.html">more>></a></span></div>
-<table width="470" border="0" cellspacing="2" cellpadding="0">
-  <tr>
-    <td width="387" align="left"><a href="xinwen.html">关于蒙城县创新中学召开家长会的公告通知</a></td>
-    <td width="77">11月14日</td>
-  </tr>
-  <tr>
-    <td align="left"><a href="xinwen.html">安徽省高等职业教育“十一五”发展规划</a></td>
-    <td>11月14日</td>
-  </tr>
-  <tr>
-    <td align="left"><a href="xinwen.html">关于举办我校科技创新大赛的通知</a></td>
-    <td>11月14日</td>
-  </tr>
- 
-</table>
-
-</div>
-
-<div class="liebiao_r"><div class="liebiaoA"><h6>教育新闻</h6><span><a href="xinwen.html">more>></a></span></div>
-<table width="470" border="0" cellspacing="2" cellpadding="0">
-  <tr>
-    <td width="115" valign="top"><a href="xiaonei1.html"><img src="images/1.jpg" width="115" height="74" /></a></td>
-    <td width="114" valign="top">蒙城县创新中学首届青年教师课堂教学大奖赛表彰为进一步提高我校青...[<a href="xinwen1.html">更多</a>]</td>
-    <td width="111" valign="top"><a href="xiaonei2.html"><img src="images/2.jpg" width="111" height="72" /></a></td>
-    <td width="120" valign="top"><p>为做好这次新生接待工作，艺术设计系作了周密安排。由系主任曹永智亲自到场...[<a href="xinwen1.html">更多</a>]</p></td>
-  </tr>
-</table>
-
-</div>
-<div class="clearit"></div>
-</div>
-
-<br />
-</div>
-</center>
-
-<div class="foot_bg"><div class="foot"><div class="foot_p">
-  <p>版权所有 © <a href="index-2.html">蒙城县创新中学</a>      联系我们    意见和建议  </p>
-  <p> 
-    技术支持：xxxx </p></div>
-</div></div>
-
-</body>
-</html>
+<!DOCTYPE >
+<html>
+	<html lang="ch">
+	<head>
+		<meta charset="utf-8">
+		<title>三千博客</title>
+		<style type="text/css">
+			#title{
+				font-family:"新宋体";
+				position: absolute;
+				color: brown;
+				font-size: 60px;
+			    text-align-last: center;
+			    left: 40%;
+			    top: 10%;
+			}
+			#content{
+				position: absolute;
+				top: 50%;/*顶部到元素*/
+				left:30%;
+				width: 40%;
+				height:400px;
+				margin-top:-200;/*边缘到底部*/		
+				background-color: #34495e;
+				text-align-last: center;
+				/*这里做一个半透明效果*/
+				filter:alpha(Opacity=60);
+				-moz-opacity:0.8;
+				opacity: 0.8;
+			}
+			#userid{
+				color: #3498db;
+				font-size: 30px;
+				text-align: center;
+				border-radius: 25px;/*边框圆角*/
+			}
+			#password{
+				color: #3498db;
+				font-size: 30px;
+				text-align: center;
+				border-radius: 25px;
+			}
+			#denglu{
+				background-color: pink;
+				border-radius:10px;
+             	border:0;/*边框宽度0*/
+            	height:50px;
+             	width:90px;
+            	padding:5px 10px;/*上下填充10 左右5*/
+            	font-size: 20px;
+			}
+			#zhuce{
+				background-color: pink;
+				border-radius:10px;
+             	border:0;/*边框宽度0*/
+            	height:50px;
+             	width:90px;
+            	padding:5px 10px;/*上下填充10 左右5*/
+            	font-size: 20px;
+			}
+			#content h1{
+				color: white;
+				font-size: 50px;			
+			}
+         </style>
+	</head>
+	<body background="1.jpg">
+		<div id="title">
+			<svg t="1585894995769" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3410" width="50" height="50"><path d="M0 0h1024v1024H0z" fill="#FFFFFF" p-id="3411"></path><path d="M212 80c-44.112 0-80 35.888-80 80v704c0 44.112 35.888 80 80 80h600c44.112 0 80-35.888 80-80V160c0-44.112-35.888-80-80-80H212m0-80h600c88.366 0 160 71.634 160 160v704c0 88.366-71.634 160-160 160H212c-88.366 0-160-71.634-160-160V160c0-88.366 71.634-160 160-160z" fill="#707070" p-id="3412"></path><path d="M322 12v1000a12 12 0 0 1-12 12h-56a12 12 0 0 1-12-12V12a12 12 0 0 1 12-12h56a12 12 0 0 1 12 12z" fill="#707070" p-id="3413"></path><path d="M678 80v199.11h88V80h-88m-60-60h208v283.652c0 19.582-17.908 35.458-40 35.458h-128c-22.092 0-40-15.876-40-35.458V20z" fill="#707070" p-id="3414"></path></svg>
+			三千博客	
+		</div>
+	<div id="content">		
+		<h1 >Welcome</h1><br />
+		<form action="#"method="post" >
+			<input type="text" name="userid" id="userid" placeholder="请输入账号" /><br /><br />
+			<input type="password" name="password" id="password" placeholder="请输入密码" /><br /><br />
+			<input type="submit" name="denglu" id="denglu" value="登录" />&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="zc.html" target="_blank"><input type="button" name="zhuce"id="zhuce"value="注册"/></a>
+		</form></div>
+	</body>
+</html>	 	
 
 
 
